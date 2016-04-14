@@ -1,0 +1,93 @@
+<!--=====================================
+=            Listing Samples            =
+======================================-->
+<div class="page">
+
+  <!-- P A G E  H E A D E R -->
+  <page-header></page-header>
+
+  <!-- M A I N  S E C T I O N -->
+  <section class="tile" fullscreen="isFullscreen07">
+
+    <!-- H E A D E R -->
+    <div class="tile-header dvd dvd-btm">
+      <h1 class="custom-font">Listing <strong>samples</strong></h1>
+      <ul class="controls">
+        <li>
+          <a href ng-click="vm._new()">
+            <fa name="plus"></fa> New Sample
+          </a>
+        </li>
+
+        <li> <a href tile-control-refresh ng-click="vm._index()"> <fa name="refresh"></fa> Refresh</a> </li>
+      </ul>
+    </div>
+
+    <!-- S E A R C H  I N P U T -->
+    <div class="tile-widget">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-5">
+          <div class="form-group">
+            <input ng-model="searchInput" type="text" class="input-sm form-control"  placeholder="Search here...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- T A B L E -->
+    <div class="tile-body p-0">
+      <div class="table-responsive">
+        <table class="table mb-0">
+
+        <!-- T A B L E  H E A D  -->
+          <thead>
+            <tr>
+
+              <th class="text-center">Name</th>
+              <th class="text-center actions-column">Actions</th>
+
+            </tr>
+          </thead>
+
+          <!-- T A B L E  B O D Y  -->
+          <tbody>
+            <tr dir-paginate="sample in vm.samples | filter: searchInput | filter: filters | itemsPerPage: 15 track by $index">
+
+              <td class="text-center"> <a href ng-click="vm._show(sample.id)"> {{sample}} </a>
+
+              <!-- A C T I O N  B U T T O N S -->
+              <td class="dropdown text-center">
+                <button type="button" class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Actions <span class="caret">
+                </span>
+                </button>
+
+                <ul class="dropdown-menu">
+                  <li> <a href ng-click="vm._show(sample.id)"> Details</a> </li>
+                  <li> <a href ng-click="vm._edit(sample.id)"> Edit</a> </li>
+                  <li role="separator" class="divider"></li>
+                  <li> <a href ng-click="vm._destroy(sample.id)"> Delete</a> </li>
+                </ul>
+              </td>
+
+            </td>
+          </tbody>
+        </table>
+
+      </div>
+    </div> <!-- table -->
+
+    <!-- P A G I N A T I O N  -->
+    <div class="tile-footer dvd dvd-top">
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-3 text-right">
+          <dir-pagination-controls></dir-pagination-controls>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+

@@ -1,0 +1,64 @@
+<!-- HEADER -->
+<div class="modal-header">
+  <h3 class="modal-title custom-font">Sample Details
+      <a href ng-click="vm._destroy()" ng-show="vm.sample.id" class="btn text-red pull-right" tooltip="Delete!" > <fa name="trash"></fa> </a>
+  </h3>
+</div>
+
+<!-- BODY -->
+<div class="modal-body">
+
+    <form class="col-md-12 mt-20" name="formSample" ng-submit="vm._save(formSample.$invalid)" submit-validate  novalidate>
+        <h4>Title Information</h4>
+        <table class="table table-user-information form-validation">
+            <tbody>
+
+                <!-- Name -->
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <!-- Label -->
+                        <span ng-class="{ 'hidden': vm.isEditing }" >
+                            {{vm.sample.name}}
+                        </span>
+
+                        <!-- Input -->
+                        <div class="form-group mb-0" ng-class="{ 'hidden': !vm.isEditing }">
+                          <input required ng-model="vm.sampleForm.name" class="form-control">
+                        </div>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br>
+
+        <!-- Actions -->
+        <div class="modal-footer">
+
+            <!-- Buttons when editing -->
+            <div ng-class="{ 'hidden': !vm.isEditing }">
+                <button class="btn btn-success btn-border" type="submit">
+                    Save
+                </button>
+                <button ng-click="vm.isEditing = false" class="btn btn-red btn-border" type="button">
+                    Cancel
+                </button>
+            </div>
+
+            <!-- Buttons when NOT editing -->
+            <div ng-class="{ 'hidden': vm.isEditing }">
+                <button ng-click="vm.setEditMode()" class="btn btn-primary btn-border" type="button">
+                    Edit
+                </button>
+                <button ng-click="vm.close()" class="btn btn-default btn-border" type="button">
+                    Close
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<div class="clearfix"></div>
